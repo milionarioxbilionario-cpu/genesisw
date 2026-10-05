@@ -1,0 +1,35 @@
+{
+  "name": "genesis-backend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "prisma:generate": "prisma generate",
+    "postinstall": "prisma generate",
+    "db:use:pg": "prisma generate --schema prisma/schema.prisma",
+    "db:use:sqlite": "prisma generate --schema prisma/schema.sqlite.prisma",
+    "db:push:pg": "prisma db push --schema prisma/schema.prisma",
+    "db:push:sqlite": "prisma db push --schema prisma/schema.sqlite.prisma",
+    "db:check": "node scripts/smoke_boot.js",
+    "test:google": "node scripts/test_google.js",
+    "test:auth": "node scripts/test_auth.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.2",
+    "express-rate-limit": "^6.11.2",
+    "helmet": "^7.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^10.0.10",
+    "nodemon": "^2.0.22",
+    "pg": "^8.13.1",
+    "prisma": "^5.0.0",
+    "zod": "^3.25.76"
+  }
+}

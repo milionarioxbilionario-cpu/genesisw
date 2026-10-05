@@ -1,0 +1,15 @@
+/* Painel admin — mesmo design system do produto (tokens + Tailwind). */
+@import '@fontsource-variable/inter';
+@import '@tokens';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { font-family: var(--font); font-size: 14px; line-height: 22px; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+  :focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--radius-sm); }
+}
+@layer utilities {
+  .num { font-variant-numeric: tabular-nums; }
+}

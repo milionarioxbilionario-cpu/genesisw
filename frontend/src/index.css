@@ -1,0 +1,48 @@
+/* ==========================================================================
+   GENESIS — CSS GLOBAL (Genesis 2.0)
+   So reset, base tipografica e o estilo de impressao. Todo o resto e
+   Tailwind sobre os tokens de ui/tokens.css (ver tailwind.config.js).
+   ========================================================================== */
+@import '@fontsource-variable/inter';
+@import './ui/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 22px;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  #root { min-height: 100vh; }
+  ::selection { background: var(--accent-soft); color: var(--accent-text); }
+  :focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--radius-sm); }
+  input::placeholder, textarea::placeholder { color: var(--text-faint); }
+}
+
+@layer utilities {
+  /* Dinheiro e quantidades: algarismos de largura fixa para alinhar colunas. */
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum'; }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+/* POS: a faixa da ultima leitura do leitor entra de cima (feedback, nao decoracao). */
+.pos-scan { animation: pos-scan-in var(--dur) var(--ease); }
+@keyframes pos-scan-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* Relatorios: "Imprimir / Guardar PDF" usa o dialogo do browser. */
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .print-full { max-width: none !important; padding: 0 !important; }
+}
